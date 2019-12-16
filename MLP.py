@@ -86,12 +86,15 @@ class MLP:
         params = self.initialize_weight(X.shape[1], len(np.unique(y)), self.hidden_nodes)
         self.c = []
         for epoch in range(self.epochs):
+            printCost = True
             X, y = shuffle(X,y)
             forward_pass = self.forward(X, params)
             weight_updates = self.backprop(X, y, forward_pass, params)
             params = self.update_weight(params, weight_updates)
-            if epoch % 50 == 0 :
+            if epoch % 50 == 0 and printCost:
+                printCost  = False
                 self.c.append(self.cost(forward_pass['a2'], y))
+                print('epoch #', epoch,self.c[-1])
         self.params = params
         return params
 
