@@ -26,13 +26,13 @@ def get_data(fileName):
     y= data[4].values
     # initialse the model
     return X, y
-    
+
 if __name__ == '__main__':
 
     X_train, y_train = get_data('iris_train.dat')
     X_validate, y_validate = get_data('iris_test.dat')
 
-    mlp = MLP(lr= 1e-5, hidden_nodes = 8, epochs= 2000, batch_size = 8)
+    mlp = MLP(lr= 1e-3, hidden_nodes = 8, epochs= 2000, batch_size = 8)
     # generate the model params by fitting the spiral data set
     params = mlp.fit_with_validation(X_train,y_train,X_validate,y_validate)  #uncomment this to train the model again
     # save the model params to a file

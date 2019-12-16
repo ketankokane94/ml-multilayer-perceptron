@@ -29,7 +29,7 @@ if __name__ == '__main__':
     X_train = (X_train/255.0 * 0.99 ) + 0.01
     X_validate = (X_validate/255.0 * 0.99 ) + 0.01
 
-    mlp = MLP(lr= 0.01, hidden_nodes = 34, epochs= 50, batch_size = 128)
+    mlp = MLP(lr= 0.01, hidden_nodes = 34, epochs= 100, batch_size = 128)
     # generate the model params by fitting the spiral data set
     params = mlp.fit_with_validation(X_train,y_train,X_validate,y_validate)  #uncomment this to train the model again
     # save the model params to a file

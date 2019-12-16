@@ -113,8 +113,7 @@ class MLP:
                 y = np.array(y_train[idx: idx + 1 * batch]).reshape(-1)
                 forward_pass = self.forward(X, params)
                 weight_updates = self.backprop(X, y, forward_pass, params)
-                # if _ % 50 == 0 and printError:
-                if  printError:
+                if printError:
                     printError = False
                     self.loss.append(self.cost(forward_pass['a2'], y))
                     forward_pass = self.forward(X_validate, params)
