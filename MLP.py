@@ -2,18 +2,32 @@ import pandas as pd
 import numpy as np
 from sklearn.utils import shuffle
 import matplotlib.pyplot as plt
-import json
+import json, codecs
 
 from scipy.special import softmax
 
+class NumpyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return json.JSONEncoder.default(self, obj)
+
+
+
 def save_model(fileName, params):
     with open(fileName, 'w') as f:
-        json.dump(params, f, sort_keys=True)
+        json.dump(params, f, cls=NumpyEncoder)
+
 
 def load_model(fileName):
-    with open(fileName, 'r') as f:
-        data = json.load(f)
-    return data
+    obj_text = codecs.open(fileName, 'r', encoding='utf-8').read()
+    json_load = json.loads(obj_text)
+    params = {}
+    params['w1'] = np.asarray(json_load["w1"])
+    params['b1'] = np.asarray(json_load["b1"])
+    params['w2'] = np.asarray(json_load["w2"])
+    params['b2'] = np.asarray(json_load["b2"])
+    return params
 
 class MLP:
     def __init__(self, lr = 1e-3, hidden_nodes=8, epochs=1000, batch_size = 4):
