@@ -16,3 +16,7 @@ python3 q1a.py
 Execution fails if the required data files and *.json files are not present in the same directory.
 
 To train the model again simply uncomment the call to mlp.fit() function.
+
+For question 2.
+Need to unzip the mnist_dataset.zip file and copy the .csv file in the same directory as
+q2.py. 

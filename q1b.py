@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # column two is the label
     y = data[2].values
     # initialse the model
-    mlp = MLP(lr= 1e-3, hidden_nodes = 8, epochs= 20000)
+    mlp = MLP(lr= 1e-3, hidden_nodes = 12, epochs= 20000)
     # generate the model params by fitting the spiral data set
     # params = mlp.fit(X,y)  #uncomment this to train the model again
     # save the model params to a file
