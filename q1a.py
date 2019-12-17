@@ -3,7 +3,7 @@ import pandas as pd
 from MLP import MLP
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
-from MLP import save_model
+from MLP import save_model, load_model
 
 epsilon = 1e-3
 
@@ -108,18 +108,18 @@ if __name__ == '__main__':
     # column two is the label
     y = data[2].values
     # initialse the model
-    mlp = MLP(lr= 1e-3, hidden_nodes = 8 , epochs= 2000)
+    mlp = MLP(lr= 1e-3, hidden_nodes = 8 , epochs= 20000)
     # generate the model params by fitting the spiral data set
-    params = mlp.fit(X,y)  #uncomment this to train the model again
+    # params = mlp.fit(X,y)  #uncomment this to train the model again
     # save the model params to a file
-    # save_model('q1b_param.json', params)
+    # save_model('q1a_param.json', params)
     #read the model params from a file
-    # params = load_model('q1b_param.json')
-    # mlp.set_params(params)
+    params = load_model('q1a_param.json')
+    mlp.set_params(params)
     # code to generate the classification_report and contour plot
     y_pred = mlp.predict(X)
 
-    mlp.plot_cost_function()
+    # mlp.plot_cost_function() uncomment this along with fit function to generate the cost function plot
     print(classification_report(y, y_pred))
     # draw decision boundary
     plot_decision_boundary(mlp, X, y)
