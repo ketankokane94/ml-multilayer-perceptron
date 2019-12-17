@@ -5,8 +5,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-# from MLP import save_model
-# from MLP import load_model
+from MLP import save_model
+from MLP import load_model
 
 
 def plot(loss, vloss):
@@ -31,11 +31,11 @@ if __name__ == '__main__':
 
     mlp = MLP(lr= 0.01, hidden_nodes = 34, epochs= 100, batch_size = 128)
     # generate the model params by fitting the spiral data set
-    params = mlp.fit_with_validation(X_train,y_train,X_validate,y_validate)  #uncomment this to train the model again
+    # params = mlp.fit_with_validation(X_train,y_train,X_validate,y_validate)  #uncomment this to train the model again
     # save the model params to a file
-    # save_model('q1c_param.json', params)
+    # save_model('q2_param.json', params)
     #read the model params from a file
-    # params = load_model('q1c_param.json')
+    params = load_model('q2_param.json')
     mlp.set_params(params)
     # code to generate the classification_report for traing and validation set both
     print('classification_report on training set')
@@ -48,5 +48,5 @@ if __name__ == '__main__':
     print(confusion_matrix(y_validate, y_pred))
     print(accuracy_score(y_validate, y_pred))
 
-    plot(mlp.loss, mlp.vloss)
-    plt.show()
+    # plot(mlp.loss, mlp.vloss)
+    # plt.show()
