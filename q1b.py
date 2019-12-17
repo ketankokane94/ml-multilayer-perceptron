@@ -3,7 +3,7 @@ import pandas as pd
 from MLP import MLP
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
-from MLP import save_model
+from MLP import save_model, load_model
 
 
 def plot_decision_boundary(clf, attr, label):
@@ -31,11 +31,11 @@ if __name__ == '__main__':
     # initialse the model
     mlp = MLP(lr= 1e-3, hidden_nodes = 8, epochs= 20000)
     # generate the model params by fitting the spiral data set
-    params = mlp.fit(X,y)  #uncomment this to train the model again
+    # params = mlp.fit(X,y)  #uncomment this to train the model again
     # save the model params to a file
     # save_model('q1b_param.json', params)
     #read the model params from a file
-    # params = load_model('q1b_param.json')
+    params = load_model('q1b_param.json')
     mlp.set_params(params)
     # code to generate the classification_report and contour plot
     y_pred = mlp.predict(X)
