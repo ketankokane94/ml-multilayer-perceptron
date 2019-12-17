@@ -2,11 +2,12 @@ import numpy as np
 import pandas as pd
 from MLP import MLP
 from sklearn.metrics import accuracy_score
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, plot_confusion_matrix
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from MLP import save_model
 from MLP import load_model
+import seaborn as sns
 
 
 def plot(loss, vloss):
@@ -40,13 +41,31 @@ if __name__ == '__main__':
     # code to generate the classification_report for traing and validation set both
     print('classification_report on training set')
     y_pred = mlp.predict(X_train)
-    print(confusion_matrix(y_train, y_pred))
+    mat = confusion_matrix(y_train, y_pred)
+    print(mat)
     print(accuracy_score(y_train, y_pred))
-
+    # uncomment below code to generate the heatmap
+    # mat = mat / mat.astype(np.float).sum(axis=1)
+    #
+    # sns.heatmap(mat,annot=True,cbar=False)
+    # plt.ylabel('True Label')
+    # plt.xlabel('Predicted Label')
+    # plt.title('Confusion Matrix')
+    # plt.show()
     print('classification_report on validation set')
     y_pred = mlp.predict(X_validate)
-    print(confusion_matrix(y_validate, y_pred))
+
     print(accuracy_score(y_validate, y_pred))
+
+    mat = confusion_matrix(y_validate, y_pred)
+    print(mat)
+    # uncomment below code to generate the heatmap
+    # mat = mat / mat.astype(np.float).sum(axis=1)
+    # sns.heatmap(mat,annot=True,cbar=False)
+    # plt.ylabel('True Label')
+    # plt.xlabel('Predicted Label')
+    # plt.title('Confusion Matrix')
+    # plt.show()
 
     # plot(mlp.loss, mlp.vloss)
     # plt.show()
