@@ -3,8 +3,8 @@ import pandas as pd
 from MLP import MLP
 from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
-# from MLP import save_model
-# from MLP import load_model
+from MLP import save_model
+from MLP import load_model
 
 
 def plot(loss, vloss):
@@ -34,11 +34,11 @@ if __name__ == '__main__':
 
     mlp = MLP(lr= 1e-3, hidden_nodes = 8, epochs= 2000, batch_size = 8)
     # generate the model params by fitting the spiral data set
-    params = mlp.fit_with_validation(X_train,y_train,X_validate,y_validate)  #uncomment this to train the model again
+    # params = mlp.fit_with_validation(X_train,y_train,X_validate,y_validate)  #uncomment this to train the model again
     # save the model params to a file
     # save_model('q1c_param.json', params)
     #read the model params from a file
-    # params = load_model('q1c_param.json')
+    params = load_model('q1c_param.json')
     mlp.set_params(params)
     # code to generate the classification_report for traing and validation set both
     print('classification_report on training set')
@@ -49,5 +49,5 @@ if __name__ == '__main__':
     y_pred = mlp.predict(X_validate)
     print(classification_report(y_validate, y_pred))
 
-    plot(mlp.loss, mlp.vloss)
-    plt.show()
+    # plot(mlp.loss, mlp.vloss)
+    # plt.show()
