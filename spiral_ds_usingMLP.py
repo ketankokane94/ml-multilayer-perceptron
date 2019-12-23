@@ -23,7 +23,7 @@ def plot_decision_boundary(clf, attr, label):
 
 
 if __name__ == '__main__':
-    data = pd.read_csv('spiral_train.dat', header = None)
+    data = pd.read_csv('data/spiral_train.dat', header = None)
     # first two columns are the features
     X = data[[0,1]].values
     # column two is the label
