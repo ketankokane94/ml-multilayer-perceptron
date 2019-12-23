@@ -12,15 +12,13 @@ class NumpyEncoder(json.JSONEncoder):
             return obj.tolist()
         return json.JSONEncoder.default(self, obj)
 
-
-
 def save_model(fileName, params):
-    with open(fileName, 'w') as f:
+    with open('params/' + fileName, 'w') as f:
         json.dump(params, f, cls=NumpyEncoder)
 
 
 def load_model(fileName):
-    obj_text = codecs.open(fileName, 'r', encoding='utf-8').read()
+    obj_text = codecs.open('params/' + fileName, 'r', encoding='utf-8').read()
     json_load = json.loads(obj_text)
     params = {}
     params['w1'] = np.asarray(json_load["w1"])
