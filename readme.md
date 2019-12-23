@@ -1,22 +1,49 @@
-The generic implementation of MLP which is used by all 4 models
-is kept in MLP.py which is imported in all the subsequent py files.
+# Multi-layer perceptron using Numpy
 
-All the cost graph generation code, fit function and save model functions are
-commented before submitting the code. As the models are trained and saved in
-the appropriate .json files which the model uses to load the weights from to generated
-the predictions.
+Implemented a multi-layer (one hidden layer) perceptron capable of non-linear function learning.
 
-The code required for each question is kept in the required files.
+## Getting Started
 
-to execute the model simply need to execute the .py file
+Required data-sets for given examples can be found in the data/ directory. 
+Learned params for the toy examples are in params/ directory.
 
-ex
-python3 q1a.py
+### Prerequisites
 
-Execution fails if the required data files and *.json files are not present in the same directory.
+Numpy, some graph libraries, sklearn, json and codecs.
+needs python3 installed.
 
-To train the model again simply uncomment the call to mlp.fit() function.
 
-For question 2.
-Need to unzip the mnist_dataset.zip file and copy the .csv file in the same directory as
-q2.py. 
+### Installing
+Simply clone the repo, or Just copy past the MLP.py file. 
+all the required code to train the model is in MLP.py. 
+
+
+## Example
+* trained MLP using XOR data-set, also performed gradient checking to see if the analytical gradient calculation is not buggy.
+* trained MLP using Spiral data, to check if the model could learn non-linear function, plotted the Decision boundary to validate.
+* trained MLP on IRIS dataset
+* trained MLP on MNIST dataset (well, why not everyone is training on MNIST)
+
+
+## Running the examples
+
+Refer any of the example file to check the usage. 
+I tried to keep the usage to other algorithm implementation in sklearn, by just needing to call the fit function by X and Y values to it.
+
+PS: I moved the dataset to data/ in the process deleted XOR.data dataset, thus example breaks. but adding the copy of the xor dataset would remove the error.
+
+
+
+## Authors
+
+* **Ketan Kokane** - *Initial work* - (https://cs.rit.edu/~kk7471)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
